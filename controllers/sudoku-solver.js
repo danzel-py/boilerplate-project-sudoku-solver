@@ -1,10 +1,10 @@
 function SudokuSolver() {
 
   this.validate = function(puzzleString) { // RETURNS TRUE OR ERROR MSG
-    let regex = /[^0-9.]/
+    let regex = /[^1-9.]/
     if (!puzzleString) return "Required field missing"
-    if (regex.test(puzzleString)) return "Expected puzzle to be 81 characters long"
-    if (puzzleString.length !== 81) return "Invalid characters in puzzle"
+    if (regex.test(puzzleString)) return "Invalid characters in puzzle"
+    if (puzzleString.length !== 81) return "Expected puzzle to be 81 characters long" 
     return true
   }
 

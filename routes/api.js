@@ -13,8 +13,15 @@ module.exports = function (app) {
       let puzzleStr = req.body.puzzle
       let coordinateStr = req.body.coordinate
       let value = req.body.value
+      let regex1 = /[^1-9]/
+      // any missing fields?
+      if (!puzzleStr || !coordinateStr || !value) return res.json({error: 'Required field(s) missing'})
+      // valid value?
+      if (regex1.test(value)) return res.json({error: 'Invalid value'})
+      // valid puzzle string?
+      if (sudokuSolver.validate(puzzleStr)!==true) return res.json({error: sudokuSolver.validate(puzzleStr)})
       // valid coordinate?
-      if(!coordinateChecker.getCellPosition(coordinateStr)) return res.json({error: 'invalid coordinate'})
+      if(!coordinateChecker.getCellPosition(coordinateStr)) return res.json({error: 'Invalid coordinate'})
       
       let coordinateArr = coordinateChecker.getCellPosition(coordinateStr)
       let conflictArr = []
