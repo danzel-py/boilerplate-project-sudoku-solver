@@ -193,11 +193,4 @@ suite('Functional Tests', () => {
                 assert.equal(res.body.error, 'Invalid value')
             })
     })
-
-    
-
 });
-/*
-Write the following tests in tests/2_functional-tests.js
-
-*/
