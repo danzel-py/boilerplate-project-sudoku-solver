@@ -111,8 +111,20 @@ function SudokuSolver() {
     let boardString = [...puzzleString]
     let reGex = /[.]/
 
-    // Stop recursion here (puzzle solved)
+    // STOP RECURSION here (puzzle solved)
     if (!reGex.test(boardString)) {
+      let regex = [/[1]/g,/[2]/g,/[3]/g,/[4]/g,/[5]/g,/[6]/g,/[7]/g,/[8]/g,/[9]/g]
+      for (let i = 0; i<9; i++){
+        let inspectRow = puzzleString.slice(i*9,(i+1)*9).split('')
+        console.log(inspectRow)
+        let numberRow = inspectRow.map((num)=>parseInt(num))
+        let sortedRow = numberRow.sort((a,b)=>a-b)
+        for (let i = 0; i<9; i++){
+          if(sortedRow[i]!==i+1){
+            return 'Puzzle cannot be solved'
+          }
+        }
+      }
       return puzzleString
     }
 
